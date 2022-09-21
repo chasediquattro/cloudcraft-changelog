@@ -1,0 +1,15 @@
+Project implementation during the hackathon will be limited in scope, and should adhere to the following guidelines and limitations:
+
+Frontend Features:
+  - Search the changelog DB by content Name or UID
+  - View a graphical (expandable) timeline of changes made to content
+  - Submit a new changelog entry for a piece of content
+  - GraphQL connection to backend API
+
+Backend Features:
+  - Connect to and interface with MondoDB cluster via Mongoose
+  - Define and uphold schema for the NoSQL database
+  - Data validation
+  - Save new entries to the database
+  - Search the DB and respond with changelog data based on content Name / UID
+
