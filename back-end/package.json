@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc && node build/app.js",
+    "prestart": "tsc",
+    "start": "node build/app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "chase-diquattro",
+  "author": "chasediquattro",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "mongoose": "^6.6.1",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.3"
   }
 }

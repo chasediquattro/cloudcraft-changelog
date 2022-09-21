@@ -1,7 +1,6 @@
 {
-  "mongodb-atlas": {
-    "clusterIP": " ac-dmk56ge-shard-00-02.kgfx2om.mongodb.net:27017",
-    "username": "changelogs-develop",
-    "passphrase": "iSKsZ8FAh6eBSPVu"
+  "mongodbLocal": {
+    "location": "localhost:27017",
+    "databaseName": "changelogs"
   }
 }
