@@ -6,13 +6,19 @@ import { ChangelogModel, LogeventModel } from "./schema.js";
 
 connect(`mongodb://${config.mongodbLocal.location}/${config.mongodbLocal.databaseName}`);
 
-let demoChangelog = new ChangelogModel({ demofield: "TestingString :)"});
+// let demoChangelog = new ChangelogModel({ demofield: "TestingString :)"});
 
-demoChangelog.save();
+// demoChangelog.save();
 
-setTimeout(async () => {
-    let res = await ChangelogModel.find();
-    console.log(res);
+// setTimeout(async () => {
+//     let res = await ChangelogModel.find();
+//     console.log(res);
 
+//     disconnect();
+// }, 1000);
+
+require("./modules/csv-changelog-importer");
+
+setTimeout(() => {
     disconnect();
-}, 1000);
+}, 8000);
