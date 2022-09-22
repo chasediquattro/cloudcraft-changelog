@@ -1,24 +1,19 @@
-import { connect, disconnect } from "mongoose";
+const express = require("express");
 
-import * as config from "./config.json";
-import { Changelog, Logevent } from "./schema.js";
+// Instantiate the database accessor singleton module
+require("./modules/database");
 
-connect(`mongodb://${config.mongodbLocal.location}/${config.mongodbLocal.databaseName}`);
-
-let now = Date.now();
-console.log(now);
-
-let demoLogevent = new Logevent({ change_time_utc: now, change_type: "updated", effecting_username: "John Doe" });
-let demoChangelog: any = new Changelog();
-demoChangelog["events"].push(demoLogevent);
-
-demoChangelog.save();
-
-setTimeout(async () => {
-    let res = await Changelog.find();
-    console.log(res);
-
-    disconnect();
-}, 1000);
-
+// Run the CSV importer process
 require("./modules/csv-changelog-importer");
+
+// =========================================
+
+const changelogRouter = require("./modules/express-router")(express);
+const api = express();
+const port = 3000;
+
+api.use("/demo_api", changelogRouter);
+
+api.listen(port, () => {
+  console.log(`Changelog demo api listening on port ${port}`);
+});

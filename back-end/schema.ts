@@ -12,7 +12,7 @@ var logeventSchema = new Schema({
   change_reason: String,
   asana_task_link: String,
 
-  effecting_userID: String,
+  effecting_user_id: String,
   effecting_username: String,
   effecting_user_occupation: String,
 
@@ -22,7 +22,7 @@ var logeventSchema = new Schema({
       content_type: String,
       content_id: String,
       content_name: String,
-      replacement_changelogID: String,
+      replacement_changelog_id: String,
     },
   },
 
@@ -30,12 +30,11 @@ var logeventSchema = new Schema({
     require: false,
     type: {
       action: String,
-      affected_contentID: String,
+      affected_content_id: String,
       affected_content_name: String,
     },
   },
 });
-// TODO: Add in further pre-save data validation for each field
 
 var changelogSchema = new Schema({
   component_type: String,
@@ -43,6 +42,18 @@ var changelogSchema = new Schema({
   component_name: String,
   last_updated: String,
   events: [logeventSchema],
+});
+
+// ======================================================
+
+// TODO: Add in further pre-save data validation for each field
+
+logeventSchema.pre("save", () => {
+  console.log("Ran Logevent presave!");
+});
+
+changelogSchema.pre("save", () => {
+  console.log("Ran Changelog presave!");
 });
 
 // ======================================================

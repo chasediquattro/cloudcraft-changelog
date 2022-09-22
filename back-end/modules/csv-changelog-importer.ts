@@ -42,7 +42,5 @@ json.forEach((entry: any[]) => {
         }
     });
 
-    console.log(entryAsJson);
+    // console.log(entryAsJson);
 });
-
-
