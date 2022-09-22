@@ -36,7 +36,7 @@ json.forEach((entry: any[]) => {
 
     // Print out the name of the column, then the associated value of that column in the row
     values.forEach((value: String, index: number) => {
-        if (index < csvColumns.length) {
+        if (index <= csvColumns.length) {  // TODO: Bind data length to length of columns instead of of values with proper N/A handling
             let jsonKey: string = csvColumns[index];
             entryAsJson[jsonKey] = value || "N/A";
         }
